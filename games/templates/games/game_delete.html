@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+<h1>Are you sure you one to delete this record?</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Confirm">
+</form>
+
+
