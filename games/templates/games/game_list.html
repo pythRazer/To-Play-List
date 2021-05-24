@@ -31,6 +31,7 @@
 
 
 {% for game in object_list %}
+{% if game.status == "T" %}
 
     <!-- <ul>
         <li>Title: {{ game.title }}</li>
@@ -55,7 +56,9 @@
     </tr>
 
 </tbody>
+{% endif %}
 {% endfor %}
+
 <tfoot>
     <td>
 
@@ -113,6 +116,7 @@
     
     
     {% for game in object_list %}
+    {% if game.status == "P" %}
     
         <!-- <ul>
             <li>Title: {{ game.title }}</li>
@@ -137,7 +141,9 @@
         </tr>
     
     </tbody>
+    {% endif %}
     {% endfor %}
+   
     <tfoot>
         <td>
     
@@ -197,6 +203,7 @@
     
     
     {% for game in object_list %}
+    {% if game.status == "F" %}
     
         <!-- <ul>
             <li>Title: {{ game.title }}</li>
@@ -221,7 +228,9 @@
         </tr>
     
     </tbody>
+    {% endif %}
     {% endfor %}
+ 
     <tfoot>
         <td>
     

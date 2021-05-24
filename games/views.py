@@ -10,7 +10,7 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 class GameForm(forms.ModelForm):
     class Meta:
         model = Game
-        fields=('title', 'platform')
+        fields=('title', 'platform', 'status')
 
 class GameListView(GameForm, ListView):
 
