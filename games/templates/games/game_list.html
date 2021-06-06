@@ -1,8 +1,26 @@
 {% extends 'base.html' %}
 <h1>All Games</h1>
 {% block content %}
+
+<div>
+<div style="position: relative; right: -90px; top: 30px">
+<form action="add-a-game" method="post">
+    {% csrf_token %}
+ 
+   
+    <!-- <input type="text" value="Title">
+    <input type="text" value="Platform"> -->
+    <!-- <button type="submit" class="btn btn-primary">Add</button> -->
+
+    <button type="submit" class="btn btn-success">Add</button>
+   
+
+</form>
+</div>
 <h1 style="text-align: center;">To Play Table</h1>
+
 <table class="table table-warning" style="width:80%; border:2px solid rgb(10, 83, 179); margin: auto;">
+    
 <thead class="table-dark">
     <tr>
 
@@ -16,6 +34,9 @@
         </th>
         <th>
             Added Time
+        </th>
+        <th>
+
         </th>
         <th>
 
@@ -48,6 +69,12 @@
         <td>{{ game.title }}</td>
         <td>{{ game.platform }}</td>
         <td>{{ game.date }}</td>
+        <td>
+            <form action="{% url 'edit' pk=game.pk %}" method="POST">
+                {% csrf_token %}
+            <button value="edit" type="submit" class="btn btn-secondary" >Edit</button>
+        </form>
+        </td>
         <td> <form action="{% url 'delete' pk=game.pk %}" method="POST">
             {% csrf_token %}
         <button value="remove" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to remove this?')">Delete</button>
@@ -59,30 +86,7 @@
 {% endif %}
 {% endfor %}
 
-<tfoot>
-    <td>
 
-    </td>
-    <td>
-
-    </td>
-    <td>
-
-    </td>
-    <td>
-
-    
-    <form action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-       
-        <!-- <input type="text" value="Title">
-        <input type="text" value="Platform"> -->
-        <button type="submit" class="btn btn-primary">Add</button>
-    
-    </form>
-</td>
-</tfoot>
 
 </table>
 
@@ -105,7 +109,9 @@
             <th>
     
             </th>
-               
+            <th>
+
+            </th>
            
     
         </tr>
@@ -133,6 +139,12 @@
             <td>{{ game.title }}</td>
             <td>{{ game.platform }}</td>
             <td>{{ game.date }}</td>
+            <td>
+                <form action="{% url 'edit' pk=game.pk %}" method="POST">
+                    {% csrf_token %}
+                <button value="edit" type="submit" class="btn btn-secondary" >Edit</button>
+            </form>
+            </td>
             <td> <form action="{% url 'delete' pk=game.pk %}" method="POST">
                 {% csrf_token %}
             <button value="remove" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to remove this?')">Delete</button>
@@ -143,32 +155,8 @@
     </tbody>
     {% endif %}
     {% endfor %}
-   
-    <tfoot>
-        <td>
-    
-        </td>
-        <td>
-    
-        </td>
-        <td>
-    
-        </td>
-        <td>
-    
-        
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-           
-            <!-- <input type="text" value="Title">
-            <input type="text" value="Platform"> -->
-            <button type="submit" class="btn btn-primary">Add</button>
-        
-        </form>
-    </td>
-    </tfoot>
-    
+ 
+
     </table>
 
 <h1 style="text-align: center;">Finished Games
@@ -191,6 +179,9 @@
             </th>
             <th>
     
+            </th>
+            <th>
+
             </th>
                
            
@@ -220,6 +211,12 @@
             <td>{{ game.title }}</td>
             <td>{{ game.platform }}</td>
             <td>{{ game.date }}</td>
+            <td>
+                <form action="{% url 'edit' pk=game.pk %}" method="POST">
+                    {% csrf_token %}
+                <button value="edit" type="submit" class="btn btn-secondary">Edit</button>
+            </form>
+            </td>
             <td> <form action="{% url 'delete' pk=game.pk %}" method="POST">
                 {% csrf_token %}
             <button value="remove" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to remove this?')">Delete</button>
@@ -231,35 +228,15 @@
     {% endif %}
     {% endfor %}
  
-    <tfoot>
-        <td>
     
-        </td>
-        <td>
-    
-        </td>
-        <td>
-    
-        </td>
-        <td>
-    
-        
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-           
-            <!-- <input type="text" value="Title">
-            <input type="text" value="Platform"> -->
-            <button type="submit" class="btn btn-primary">Add</button>
-        
-        </form>
-    </td>
-    </tfoot>
     
     </table>
 
 <!-- <h4>Add a game</h4> -->
 
+
+
+</div>
 
 
 

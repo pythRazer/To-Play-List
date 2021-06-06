@@ -12,8 +12,20 @@ class Game(models.Model):
     )
 
     status = models.CharField(max_length=1, choices=STATUS, default='T')
+
+    PLATFORM = (
+        ('PS5', 'PS5'),
+        ('PS4', 'PS4'),
+        ('Switch', 'Switch'),
+        ('Xbox One', 'Xbox One'),
+        ('Xbox Series X', 'Xbox Series X'),
+        ('PC', 'PC'),
+        ('Other', 'Other'),
+    )
+
+    platform = models.CharField(max_length=13, choices=PLATFORM, default='PC')
     
-    platform =  models.CharField(max_length=13, default="")
+    # platform =  models.CharField(max_length=13, default="")
     date = models.DateTimeField(auto_now_add=True)
 
     

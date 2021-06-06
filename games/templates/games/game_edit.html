@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h1>Edit</h1>
+    <form action="" method='post'>{% csrf_token %}
+        <!-- {{ form.as_p }} -->
+        <label for="id_title">Title:</label>
+        <input id="id_title" type="text" name="title" value="{{ game.title }}">
+        <label for="id_platform">Platform:</label>
+        <select id="id_platform" name="platform"">
+          
+            <option {% if game.platform == "PC" %} selected="selected"{% endif %} value="PC">PC</option>
+            <option {% if game.platform == 'PS5' %} selected="selected"{% endif %}value="PS5">PS5</option>
+            <option {% if game.platform == 'PS4' %} selected="selected"{% endif %}value="PS4">PS4</option>
+            <option {% if game.platform == 'Xbox Series X' %} selected="selected"{% endif %}value="Xbox Series X">Xbox Series X</option>
+            <option {% if game.platform == 'Xbox One' %} selected="selected"{% endif %}value="Xbox One">Xbox One</option>
+            <option {% if game.platform == 'Switch' %} selected="selected"{% endif %}value="Switch">Switch</option>
+            <option {% if game.platform == 'Other' %} selected="selected"{% endif %}value="Other">Other</option>
+          
+        </select>
+        <label for="id_status">Status:</label>
+        <select id="id_status" name="status" value="{{ game.status }}">
+            <option {% if game.status == "T" %} selected="selected"{% endif %} value="T">Toplay</option>
+            <option {% if game.status == "P" %} selected="selected"{% endif %} value="P">Progressing</option>
+            
+            <option {% if game.status == "F" %} selected="selected"{% endif %} value="F">Finished</option>
+            
+        </select>
+        
+       
+        <button class="btn btn-info ml-2" type="submit">Update</button>
+
+    </form>
+{% endblock content %}

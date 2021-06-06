@@ -24,14 +24,26 @@ class GameListView(GameForm, ListView):
       
         if(form.is_valid()):
             form.save()
+            model.save()
             print("YY")
             return HttpResponseRedirect(self.request.path_info)
-        return render(request, self.template_name, {'form':form})
+        return render(request, "games/game_list.html", {'form':form})
 
    
 class GameDelete(DeleteView):
     
     model = Game
+    success_url = reverse_lazy('home')
+
+class GameAdd(CreateView):
+    model = Game
+    template_name = "games/game_form.html"
+    fields = ('title', 'platform', 'status')
+    success_url = reverse_lazy('home')
+class GameEdit(UpdateView):
+    model = Game
+    fields = ('title', 'platform', 'status')
+    template_name = 'games/game_edit.html'
     success_url = reverse_lazy('home')
 
 
